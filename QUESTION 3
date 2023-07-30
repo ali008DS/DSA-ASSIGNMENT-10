@@ -1,0 +1,25 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def find_nth_from_end(head, n):
+    if not head:
+        return -1
+
+    length = 0
+    current = head
+
+    while current:
+        length += 1
+        current = current.next
+
+    if n > length:
+        return -1
+
+    target_index = length - n
+    current = head
+    for i in range(target_index):
+        current = current.next
+
+    return current.val

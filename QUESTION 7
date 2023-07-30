@@ -1,0 +1,23 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def insert_alternate_positions(first, second):
+    if not second:
+        return first
+
+    current_first = first
+    current_second = second
+
+    while current_first and current_second:
+        temp1 = current_first.next
+        temp2 = current_second.next
+
+        current_first.next = current_second
+        current_second.next = temp1
+
+        current_first = temp1
+        current_second = temp2
+
+    return first
